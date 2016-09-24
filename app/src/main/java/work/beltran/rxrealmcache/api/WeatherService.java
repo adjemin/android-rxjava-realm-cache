@@ -10,6 +10,6 @@ import work.beltran.rxrealmcache.api.model.WeatherResponse;
  * More on http://beltran.work
  */
 public interface WeatherService {
-    @GET("weather")
-    Observable<WeatherResponse> getWeather(@Query("q") String city, @Query("apikey") String apiKey);
+    @GET("weather?units=metric")
+    Observable<WeatherResponse> getWeather(@Query("q") String city, @Query("appid") String apiKey);
 }
