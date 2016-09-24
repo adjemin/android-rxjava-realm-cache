@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ((App) getApplication()).component.inject(this);
 
-        service.getWeather("Berlin", "test")
+        service.getWeather("Berlin", getString(R.string.api_key))
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::display, this::processError);
     }
