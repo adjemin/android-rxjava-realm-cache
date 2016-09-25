@@ -2,6 +2,8 @@ package work.beltran.rxrealmcache;
 
 import android.app.Application;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import work.beltran.rxrealmcache.di.WeatherServiceModule;
 
 /**
@@ -15,6 +17,10 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        RealmConfiguration realmConfig = new RealmConfiguration.Builder(this).build();
+        Realm.setDefaultConfiguration(realmConfig);
+
         component = DaggerWeatherComponent
                 .builder()
                 .weatherServiceModule(new WeatherServiceModule(getString(R.string.base_url)))
