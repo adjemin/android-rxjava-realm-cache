@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
                         .delay(1L, java.util.concurrent.TimeUnit.SECONDS)
                         .subscribeOn(Schedulers.io())
                         // Write to Realm on Computation scheduler
+                        .observeOn(Schedulers.computation())
                         .map(this::writeToRealm)
-                        .subscribeOn(Schedulers.computation())
                         // Read results in Android Main Thread (UI)
                         .observeOn(AndroidSchedulers.mainThread())
                         .map(this::readFromRealm);
